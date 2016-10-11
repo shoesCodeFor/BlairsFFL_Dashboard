@@ -12,4 +12,6 @@ change out teams/players for display on the dashboard.
 
 This repo will contain tools for the Pi interface and Arduino code to run LEDs from a serial feed.
 
-In our fork of nflgame you will find a couple python utilities and a search tool to grab players GSIS ID which is used for stat tracking.
+In our <a href="https://github.com/shoesCodeFor/nflgame">fork of nflgame</a> you will find a couple python utilities and a search tool to grab players GSIS ID which is used for stat tracking.
+
+<a href="https://github.com/shoesCodeFor/nflgame">Blair's FFL Dashboard fork of nflgame by BurntSushi</a>
