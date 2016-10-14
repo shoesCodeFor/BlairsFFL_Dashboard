@@ -49,7 +49,7 @@ void loop()
     // wait a bit for the entire message to arrive
     delay(100);
 
-    Serial.println("Ready to receive");
+    Serial.println("Bring It On");
     // clear the screen
     lcd.clear();
     // read all the available characters
