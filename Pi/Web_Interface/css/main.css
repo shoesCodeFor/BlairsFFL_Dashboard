@@ -10,11 +10,34 @@
 
 
 
+@font-face {
+    font-family: tecmo1;
+    src: url('../fonts/GF-TecmoSet1.TTF');
+}
 
+@font-face {
+    font-family: tecmo2;
+    src: url('../fonts/GF-TecmoSet2.TTF');
+}
+@font-face {
+    font-family: tecmoNarrow;
+    src: url('../fonts/GF-TecmoNarrow.TTF');
+}
+@font-face {
+    font-family: tecmoScore;
+    src: url('../fonts/TecmoRounedAllCaps.TTF');
+}
+body{
+    font-family: tecmoNarrow;
+}
 
-
-
-
+h1{
+    font-family: tecmo1;
+}
+h2, p{
+    font-family: tecmo2;
+    
+}
 
 
 

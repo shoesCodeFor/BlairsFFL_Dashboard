@@ -1,0 +1,58 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+function findPlayer(fname,lname){
+    $(function(){
+        $.getJSON('players.json',function(data){
+            console.log('success');
+            
+            $.each(data,function(i,emp){
+                if(emp.first_name == fname || emp.last_name == lname){
+                $('#playerList').append('<li>'+emp.first_name+' '+emp.last_name+  ' ' +emp.gsis_id  +'</li>');
+                }
+            });
+        }).error(function(){
+            console.log('error');
+        });
+    });
+}
+    
+function setPlayerName(){
+    var firstNameInput = document.getElementById("playerSearch").elements[0].value;
+    var lastNameInput = document.getElementById("playerSearch").elements[1].value;
+    findPlayer(firstNameInput, lastNameInput);
+}    
+    
+function clearBox(elementID)
+{
+    var div = document.getElementById(elementID);
+    while(div.firstChild){
+    div.removeChild(div.firstChild);
+    }
+}    
+
+function clearField(){
+    document.getElementById("playerSearch").reset();
+   
+    
+}     
+</script>
+
+   
+</head>
+<body>
+    
+    <form id="playerSearch">
+        <input type="text"  name="firstName" value=""></input>    
+        <input type="text" name="lastName" value=""></input>
+        <input type="reset" onclick="clearField()"></input>
+    </form>      
+
+<button onclick="setPlayerName()">Go</button>   
+
+<button onclick="clearBox('playerList')">New Search</button>
+
+<ul id="playerList"></ul>
+</body>
+</html>

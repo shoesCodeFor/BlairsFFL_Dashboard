@@ -40,6 +40,7 @@ void setup() {
   lcd.begin(16, 2);
   // initialize the serial communications:
   Serial.begin(9600);
+  
 }
 
 void loop()
@@ -52,10 +53,18 @@ void loop()
     Serial.println("Bring It On");
     // clear the screen
     lcd.clear();
+     // set the cursor to (16,1):
+     
     // read all the available characters
     while (Serial.available() > 0) {
       // display each character to the LCD
+      
+      
+     
+      
       lcd.write(Serial.read());
+      
+    
     }
   }
 }
