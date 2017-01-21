@@ -1,6 +1,29 @@
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Using jQuery with a CDN -->
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>    
+<!-- <script src="js/vendor/jquery-1.11.2.min.js"></script> -->
+<!-- JS file -->
+<script src="EasyAuto/jquery.easy-autocomplete.min.js"></script> 
+
+<!-- CSS file -->
+<link rel="stylesheet" href="EasyAuto/easy-autocomplete.min.css"> 
+
+<!-- Additional CSS Themes file - not required-->
+<link rel="stylesheet" href="EasyAuto/easy-autocomplete.themes.min.css"> 
+<script type="application/javascript">
+    $(document).ready(function(){
+        $.getJSON('players.json', function(data){
+            $.each(data, function(index, val){
+                if(val.status){
+                    console.log(val.full_name);
+                }
+            });
+        });
+    });
+    
+    
+</script>    
 <script type="text/javascript">
 function findPlayer(fname,lname){
     $(function(){
@@ -9,7 +32,7 @@ function findPlayer(fname,lname){
             
             $.each(data,function(i,emp){
                 if(emp.first_name == fname || emp.last_name == lname){
-                $('#playerList').append('<li>'+emp.first_name+' '+emp.last_name+  ' ' +emp.gsis_id  +'</li>');
+                $('#playerList').append('<li>'+emp.first_name+' '+emp.last_name+  ' ' + '<button onclick="addPlayer(' + emp.gsis_id  +')">Add Player</button></li>');
                 }
             });
         }).error(function(){
@@ -36,7 +59,9 @@ function clearField(){
     document.getElementById("playerSearch").reset();
    
     
-}     
+}
+    
+   
 </script>
 
    
@@ -44,15 +69,44 @@ function clearField(){
 <body>
     
     <form id="playerSearch">
-        <input type="text"  name="firstName" value=""></input>    
+        <label name="firstName">First Name</label>
+        <input type="text"  name="firstName" value=""></input>
+        <label name="LastName">Last Name</label>
         <input type="text" name="lastName" value=""></input>
+        <label name="fullName">Full Name</label>
+        <input type="text" name="fullName" id="fullName"></input>
         <input type="reset" onclick="clearField()"></input>
     </form>      
 
 <button onclick="setPlayerName()">Go</button>   
 
-<button onclick="clearBox('playerList')">New Search</button>
+<button onclick="clearBox('playerList')">New Search - Clear Search Results</button>
 
 <ul id="playerList"></ul>
+<div></div>
 </body>
+<footer>
+<script type="text/javascript">
+    $("#fullName").keyup(function(){
+    var searchName = document.getElementById("fullName").value;   
+    $.getJSON("players.json", function(result){
+        $.each(result, function(i, field){
+                var plist = [];
+                if(field.full_name.includes(searchName)){
+                    
+                plist.push(field.full_name);    
+                $("div").append(field.full_name + " ");
+                    
+                }
+                $("#fullName").easyAutocomplete(plist);
+                // Now we have a list to create menu object with.
+                for(let j = 0; j < plist.length; j++){
+                    $("div").append(plist[j] + "hhh");
+                }
+            
+            });
+        }); 
+    });
+</script>
+</footer>
 </html>
