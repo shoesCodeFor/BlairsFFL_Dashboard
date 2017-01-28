@@ -1,14 +1,11 @@
 <!doctype html>
 <html>
 <head>
-    
-    
-<!-- Using JS with a CDN -->
-<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
-
-<!-- Local JS file -->    
+<!-- Using jQuery with a CDN -->
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>    
 <!-- <script src="js/vendor/jquery-1.11.2.min.js"></script> -->
+<!-- JS file -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- CSS file -->
 <link rel="stylesheet" href="EasyAuto/easy-autocomplete.min.css"> 
@@ -16,20 +13,16 @@
 <!-- Additional CSS Themes file - not required-->
 <link rel="stylesheet" href="EasyAuto/easy-autocomplete.themes.min.css"> 
 <script type="application/javascript">
-    var allPlayers = new Object();
+    var allPlayers = [];
     $(document).ready(function(){
         $.getJSON('players.json', function(data){
             $.each(data, function(index, val){
                 if(val.status){
-                    allPlayers[index].push(val.full_name);
+                    allPlayers[index] = val.full_name;
                     console.log(val.full_name);
                     console.log(allPlayers[index]);
-                    
                 }
-               return allPlayers;
             });
-            return allPlayers;
-            console.log(allPlayers[3] + "Our players loaded" ); 
         });
     });
     
@@ -52,26 +45,7 @@ function findPlayer(fname,lname){
     });
 }
     
-function setPlayerName(){
-    var firstNameInput = document.getElementById("playerSearch").elements[0].value;
-    var lastNameInput = document.getElementById("playerSearch").elements[1].value;
-    findPlayer(firstNameInput, lastNameInput);
-}    
-    
-function clearBox(elementID)
-{
-    var div = document.getElementById(elementID);
-    while(div.firstChild){
-    div.removeChild(div.firstChild);
-    }
-}    
-
-function clearField(){
-    document.getElementById("playerSearch").reset();
-   
-    
-}
-    
+ 
 
    
 </script>
@@ -86,22 +60,7 @@ function clearField(){
 </head>
 <body>
     
-    <form id="playerSearch">
-        <label name="firstName">First Name</label>
-        <input type="text"  name="firstName" value=""></input>
-        <label name="LastName">Last Name</label>
-        <input type="text" name="lastName" value=""></input>
-        
-        <input type="reset" onclick="clearField()"></input>
-    </form>      
-
-<button onclick="setPlayerName()">Go</button>   
-
-<button onclick="clearBox('playerList')">New Search - Clear Search Results</button>
-
-<ul id="playerList">
-
-</ul>
+    
 
 <div id="assistant" class="ui-widget">
     <label name="fullName">Full Name</label>
