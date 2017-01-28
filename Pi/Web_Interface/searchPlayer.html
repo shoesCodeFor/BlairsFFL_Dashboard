@@ -17,8 +17,9 @@
 <link rel="stylesheet" href="EasyAuto/easy-autocomplete.themes.min.css"> 
 <script type="application/javascript">
     var allPlayers = new Object();
-    $(document).ready(function(){
+    $(document).ready( => {
         $.getJSON('players.json', function(data){
+            
             $.each(data, function(index, val){
                 if(val.status){
                     allPlayers[index].push(val.full_name);
