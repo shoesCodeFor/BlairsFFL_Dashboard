@@ -1,6 +1,6 @@
-##Blair's Fantasy Football League Dashboard
+## Blair's Fantasy Football League Dashboard
 
-###A dynamic LED dashboard powered by Arduino and Pi
+### A dynamic LED dashboard powered by Arduino and Pi
 
 Scope - we want to build a real-time FFL dashboard with visual/audio effects on scoring events. 
 
